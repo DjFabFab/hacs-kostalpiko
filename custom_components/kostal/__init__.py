@@ -11,7 +11,7 @@ from homeassistant.const import (
     CONF_MONITORED_CONDITIONS,
 )
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.typing import homeassistant.core.HomeAssistant
+from homeassistant.core import HomeAssistant
 
 from .const import DEFAULT_NAME, DOMAIN, SENSOR_TYPES
 
@@ -46,7 +46,7 @@ async def async_setup(hass, config):
     return True
 
 
-async def async_setup_entry(hass:  homeassistant.core.HomeAssistant, entry: ConfigEntry):
+async def async_setup_entry(hass:  HomeAssistant, entry: ConfigEntry):
     """Load the saved entities."""
     hass.async_create_task(
         hass.config_entries.async_forward_entry_setup(entry, "sensor")
