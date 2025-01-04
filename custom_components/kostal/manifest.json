@@ -1,9 +1,9 @@
 {
   "domain": "kostal",
   "name": "Kostal",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "config_flow": true,
-  "documentation": "https://github.com/DjFabFab/kostalpiko-hacs",
+  "documentation": "https://github.com/wischhof/kostalpiko-hacs",
   "requirements": ["kostalpyko==0.5"],
   "ssdp": [],
   "zeroconf": [],
