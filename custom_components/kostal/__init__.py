@@ -9,14 +9,11 @@ from homeassistant.const import (
     CONF_USERNAME,
     CONF_PASSWORD,
     CONF_MONITORED_CONDITIONS,
-    Platform
 )
 import homeassistant.helpers.config_validation as cv
 from homeassistant.core import HomeAssistant
 
 from .const import DEFAULT_NAME, DOMAIN, SENSOR_TYPES
-
-PLATFORMS = [Platform.BINARY_SENSOR, Platform.SENSOR, Platform.UPDATE]
 
 CONFIG_SCHEMA = vol.Schema(
     {
@@ -51,7 +48,5 @@ async def async_setup(hass, config):
 
 async def async_setup_entry(hass:  HomeAssistant, entry: ConfigEntry) -> bool:
     """Load the saved entities."""
-    coordinator = HassioDataUpdateCoordinator(hass, entry, dev_reg)
-    await coordinator.async_config_entry_first_refresh()
-    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+    await hass.config_entries.async_forward_entry_setups(entry, ["sensor"])
     return True
