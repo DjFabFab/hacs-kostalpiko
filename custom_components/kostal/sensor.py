@@ -246,7 +246,10 @@ class PikoData(Entity):
     async def async_update(self):
         """Update inverter data."""
         if self.info is None:
-            await self.async_info_update()
+            try:
+                await self.async_info_update()
+            except (IndexError, Exception) as e:
+                _LOGGER.exception("Error fetching inverter info from Kostal: %s", e)
         
         try:
             # pylint: disable=protected-access
